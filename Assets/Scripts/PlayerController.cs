@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         count = 0;
         nextLevel.text = "";
+        UpdateScore();
 	}
 	
 	// Update is called once per frame
@@ -35,10 +36,15 @@ public class PlayerController : MonoBehaviour {
         {
             other.gameObject.SetActive (false);
             count = count + 1;
+            UpdateScore();
         }
     }
     void UpdateScore()
     {
         score.text = "Score: " + count.ToString();
+        if (count >= 4)
+        {
+            nextLevel.text = "You have beaten this level!";
+        }
     }
 }
