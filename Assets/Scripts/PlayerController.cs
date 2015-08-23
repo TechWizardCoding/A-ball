@@ -1,19 +1,22 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
     public float speed;
+    public Text score;
+    public Text nextLevel;
 
     private Rigidbody rb;
-
-    public int count;
+    private int count;
 
 
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
         count = 0;
+        nextLevel.text = "";
 	}
 	
 	// Update is called once per frame
@@ -28,10 +31,14 @@ public class PlayerController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("PickUp"))
+        if (other.gameObject.CompareTag ("PickUp"))
         {
-            other.gameObject.SetActive(false);
+            other.gameObject.SetActive (false);
             count = count + 1;
         }
+    }
+    void UpdateScore()
+    {
+        score.text = "Score: " + count.ToString();
     }
 }
