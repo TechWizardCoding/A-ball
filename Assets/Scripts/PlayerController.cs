@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     public float speed;
     public Text score;
     public Text nextLevel;
+    public GameObject door;
 
     private Rigidbody rb;
     private int count;
@@ -37,6 +38,9 @@ public class PlayerController : MonoBehaviour {
             other.gameObject.SetActive (false);
             count = count + 1;
             UpdateScore();
+        } else if (other.gameObject.CompareTag ("Button"))
+        {
+            door.gameObject.SetActive(false);
         }
     }
     void UpdateScore()
