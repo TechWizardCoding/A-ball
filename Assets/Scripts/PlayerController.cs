@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour {
     public Text score;
     public Text nextLevel;
     public GameObject door;
+    public GameObject quit;
+    public GameObject menu;
+    public GameObject next;
 
     private Rigidbody rb;
     private int count;
@@ -49,6 +52,9 @@ public class PlayerController : MonoBehaviour {
         if (count >= 4)
         {
             nextLevel.text = "You have beaten this level!";
+            quit.SetActive(true);
+            menu.SetActive(true);
+            next.SetActive(true);
         }
     }
 }
